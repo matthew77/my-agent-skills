@@ -130,15 +130,11 @@ def call_vlm_api(api_key: str, prompt: str, image_url: str) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description='Minimax VLM Image Understanding')
-    parser.add_argument('--api-key', default=os.environ.get('MINIMAX_API_KEY'), help='Minimax API key (or set MINIMAX_API_KEY env var)')
+    parser.add_argument('--api-key', required=True, help='Minimax API key')
     parser.add_argument('--prompt', required=True, help='Prompt/question about the image')
     parser.add_argument('--image-url', required=True, help='Image URL or local file path')
     
     args = parser.parse_args()
-    
-    if not args.api_key:
-        print("Error: --api-key or MINIMAX_API_KEY environment variable required", file=sys.stderr)
-        sys.exit(1)
     
     result = call_vlm_api(args.api_key, args.prompt, args.image_url)
     

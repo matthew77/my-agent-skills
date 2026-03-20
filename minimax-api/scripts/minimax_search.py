@@ -88,14 +88,10 @@ def format_results(result: dict) -> str:
 
 def main():
     parser = argparse.ArgumentParser(description='Minimax Web Search')
-    parser.add_argument('--api-key', default=os.environ.get('MINIMAX_API_KEY'), help='Minimax API key (or set MINIMAX_API_KEY env var)')
+    parser.add_argument('--api-key', required=True, help='Minimax API key')
     parser.add_argument('--query', required=True, help='Search query')
     
     args = parser.parse_args()
-    
-    if not args.api_key:
-        print("Error: --api-key or MINIMAX_API_KEY environment variable required", file=sys.stderr)
-        sys.exit(1)
     
     result = call_search_api(args.api_key, args.query)
     print(format_results(result))
