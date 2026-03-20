@@ -29,14 +29,14 @@ Analyzes an image and returns a text description.
 
 **Usage:**
 ```bash
+export MINIMAX_API_KEY="your_api_key"
+
 python3 skills/minimax-api/scripts/minimax_image.py \
-  --api-key "YOUR_API_KEY" \
   --prompt "Describe this image briefly" \
   --image-url "https://example.com/photo.jpg"
 
 # Or with local file
 python3 skills/minimax-api/scripts/minimax_image.py \
-  --api-key "YOUR_API_KEY" \
   --prompt "Extract text from this image" \
   --image-url "/home/user/documents/receipt.png"
 ```
@@ -54,10 +54,25 @@ Performs a web search and returns formatted results.
 
 **Usage:**
 ```bash
+export MINIMAX_API_KEY="your_api_key"
+
 python3 skills/minimax-api/scripts/minimax_search.py \
-  --api-key "YOUR_API_KEY" \
   --query "MiniMax M2.7 release notes"
 ```
+
+## Setup
+
+**Required:** A MiniMax API key from [platform.minimaxi.com](https://platform.minimaxi.com).
+
+Set it as an environment variable:
+
+```bash
+export MINIMAX_API_KEY="your_api_key_here"
+```
+
+Add the above line to your `~/.bashrc` (or `.zshrc`) to make it permanent.
+
+Alternatively, pass `--api-key` directly on the command line (not recommended — exposes key in shell history).
 
 ## API Reference
 
